@@ -75,16 +75,16 @@
         <?php if (have_posts()) : ?>
           <?php while (have_posts()) : the_post() ?>
             <div class="post-preview">
-              <a href="post.html">
+              <a href="<?php the_permalink(); ?>">
                 <h2 class="post-title">
                   <?php the_title(); ?>
                 </h2>
                 <h3 class="post-subtitle">
-                  Problems look mighty small from 150 miles up
+                  <?php the_excerpt(); ?>
                 </h3>
               </a>
               <p class="post-meta">Posted by
-                <a href="#">Start Bootstrap</a>
+                <?php the_author(); ?>
                 on September 24, 2019<?php the_time(get_option('date_format')); ?>
               </p>
             </div>
