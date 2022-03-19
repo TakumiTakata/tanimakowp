@@ -16,8 +16,16 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1><?php bloginfo('name'); ?></h1>
-            <span class="subheading"><?php bloginfo('description'); ?></span>
+            <?php if (is_category()) : ?>
+              <h1>Category</h1>
+            <?php elseif (is_author()) : ?>
+              <h1>Author</h1>
+            <?php elseif (is_date()) : ?>
+              <h1>Date</h1>
+            <?php else : ?>
+              <h1>Tag</h1>
+            <?php endif; ?>
+            <span class="subheading"><?php wp_title(''); ?></span>
           </div>
         </div>
       </div>
@@ -48,7 +56,7 @@
           <?php endwhile; ?>
           <!-- Pager -->
           <div class="clearfix">
-            <?php
+          <?php
             $link = get_previous_posts_link('&larr; 新しい記事へ');
             if ($link) {
               $link = str_replace('<a', '<a class="btn btn-primary float-left"', $link);
